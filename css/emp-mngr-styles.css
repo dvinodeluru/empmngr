@@ -156,12 +156,22 @@ input[type="number"] {
 }
 .emp-control .action-tool i {
   font-size: 18px;
+  color: #808080;
+}
+.emp-control .searchbox {
+  width: 250px;
+}
+.emp-control .searchbox input {
+  width: 100%;
+}
+.emp-control .searchbox i {
+  color: #808080;
 }
 .emp-control .table {
   border-collapse: collapse;
 }
 .emp-control .table.table-hover tr:hover {
-  background: #cfcfcf;
+  background: #f2f2f2;
 }
 .emp-control .table.table-border {
   border-top: 1px solid #484848;
@@ -179,4 +189,8 @@ input[type="number"] {
 }
 .emp-control .table td:even {
   background: #cfcfcf;
+}
+.emp-control .table tr.inactive {
+  font-style: italic;
+  color: #7F7F7F;
 }

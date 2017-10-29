@@ -1,5 +1,5 @@
 {
-    "emp-user":[
+    "empuser":[
         {
             "firstname":"John",
             "lastname":"Doe",
@@ -14,7 +14,7 @@
             "gender":"Male",
             "email":"micheal.patric@aaa.com",
             "phone":"5564634646",
-            "state":"Active"
+            "state":"Inactive"
         },
         {
             "firstname":"Jessica",
