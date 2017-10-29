@@ -1,20 +1,5 @@
 
-//CRUD ACTIONS
-let addRow, saveItem, viewRow, updateRow, deleteRow, closeModal, modal;
-addRow = document.getElementById('addItem');
-modal = document.getElementById("modal");
-saveItem = document.getElementById('saveItem');
-
-closeModal = document.querySelectorAll('.closeDialog');
-addRow.addEventListener('click',()=>{
-    modal.classList.remove("off");
-    
-})
-for (let i = 0; i < closeModal.length; i ++) {    
-    closeModal[i].addEventListener('click',()=>{
-        modal.classList.add("off");;
-    });
-}
+// Intiate JSON DATA
 function jsonInit(){
     let extHttp = new XMLHttpRequest();
     extHttp.onreadystatechange = function() {  
@@ -37,6 +22,25 @@ function jsonInit(){
     extHttp.open("GET", "json/emp-record.json", true);
     extHttp.send();
 }jsonInit();
+
+//CRUD ACTIONS
+let addRow, saveItem, viewRow, updateRow, deleteRow, closeModal, modal;
+addRow = document.getElementById('addItem');
+modal = document.getElementById("modal");
+saveItem = document.getElementById('saveItem');
+
+closeModal = document.querySelectorAll('.closeDialog');
+addRow.addEventListener('click',()=>{
+    modal.classList.remove("off");
+    
+})
+for (let i = 0; i < closeModal.length; i ++) {    
+    closeModal[i].addEventListener('click',()=>{
+        modal.classList.add("off");;
+    });
+}
+
+
 saveItem.addEventListener('click',()=>{
     let firstName = document.getElementById('firstname').value, 
         lastName = document.getElementById('lastname').value 

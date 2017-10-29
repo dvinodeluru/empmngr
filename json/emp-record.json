@@ -23,6 +23,30 @@
             "email":"jessica@aaa.com",
             "phone":"6480694586",
             "state":"Active"
+        },
+        {
+            "firstname":"Oman",
+            "lastname":"Donsre",
+            "gender":"Male",
+            "email":"oman.donsre@aaa.com",
+            "phone":"2352556564",
+            "state":"Active"
+        },
+        {
+            "firstname":"Christina",
+            "lastname":"Taylor",
+            "gender":"Female",
+            "email":"christina@aaa.com",
+            "phone":"6456452523",
+            "state":"Active"
+        },
+        {
+            "firstname":"Simon",
+            "lastname":"Tesla",
+            "gender":"Male",
+            "email":"tesla.simon@aaa.com",
+            "phone":"6435366456",
+            "state":"Active"
         }
     ]
 }
