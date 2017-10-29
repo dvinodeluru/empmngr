@@ -160,11 +160,15 @@ input[type="number"] {
 }
 .emp-control .searchbox {
   width: 250px;
+  position: relative;
 }
 .emp-control .searchbox input {
   width: 100%;
 }
 .emp-control .searchbox i {
+  position: absolute;
+  right: 0;
+  top: 2px;
   color: #808080;
 }
 .emp-control .table {

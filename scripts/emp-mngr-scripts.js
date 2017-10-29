@@ -36,7 +36,7 @@ addRow.addEventListener('click',()=>{
 })
 for (let i = 0; i < closeModal.length; i ++) {    
     closeModal[i].addEventListener('click',()=>{
-        modal.classList.add("off");;
+        modal.classList.add("off");
     });
 }
 
@@ -50,9 +50,19 @@ saveItem.addEventListener('click',()=>{
         status = document.getElementById('emp-state').value,
         tblemp = document.getElementById('empTable');        
 
-       
-   /* var empuser = JSON.parse(empuser);  //parse the JSON
-    empuser.employees.push({        //add the employee
+        let xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+        xmlhttp.open("POST", "json/emp-record.json", true);
+        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xmlhttp.send(JSON.stringify({ firstname:firstName,
+            lastname:lastName,
+            gender:gender,
+            email:email,
+            phone:phone,
+            status:status}));
+            modal.classList.add("off");
+       /* extHttp.open("POST", "json/emp-record.json", true);
+   var empuser = JSON.parse(empuser);  //parse the JSON
+    empuser.push({        //add the employee
         firstname:firstName,
         lastname:lastName,
         gender:gender,
