@@ -1,0 +1,28 @@
+{
+  "name": "empmngr",
+  "version": "1.0.0",
+  "description": "Employee Mangement Record Creat, Update and Delete actions",
+  "main": "index.html",
+  "dependencies": {
+    "g": "^2.0.1",
+    "less": "^2.7.3",
+    "node-sass": "^4.5.3",
+    "npm": "^5.5.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "make test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dvinodeluru/empmngr.git"
+  },
+  "author": "vinod dangudubiyyapu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dvinodeluru/empmngr/issues"
+  },
+  "homepage": "https://github.com/dvinodeluru/empmngr#readme"
+}

@@ -1,0 +1,182 @@
+/*
+    Employee manager stylesheet
+    Complied and minified stylesheet empmngr-style.min.css
+    Created Date:27-Oct-2017
+    Modified Date:27-Oct-2017
+    Version:0.1
+*/
+/*************************************
+Typography Components
+**************************************/
+/*Font familys*/
+/*Base Color Coding*/
+/*Basic CSS Style*/
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+html,
+body {
+  font-family: 'Verdana';
+  color: #000;
+  background: #cfcfcf none;
+  font-weight: 300;
+  font-size: 14px;
+  margin: 0;
+  height: 100%;
+}
+.wrapper {
+  min-height: 100%;
+  position: relative;
+}
+h1,
+h2,
+h3,
+h4 {
+  padding: 5px 0;
+}
+.fullwidth {
+  width: 100%;
+}
+.text-center {
+  text-align: center;
+}
+.off {
+  display: none;
+}
+.btn {
+  padding: 5px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+.btn.btn-none {
+  border: 0;
+  background: transparent none;
+}
+.btn-group input {
+  padding-right: 20px;
+}
+.btn-group > i {
+  margin-left: -20px;
+}
+header {
+  display: flex;
+  background: #cfcfcf;
+  justify-content: space-between;
+}
+header .logo {
+  width: 200px;
+  display: inline-block;
+  background: #E4E5E5;
+  height: 50px;
+}
+header .usercontrol {
+  text-align: right;
+  display: inline-block;
+  color: #7F7F7F;
+  padding: 10px 0;
+}
+header .usercontrol a,
+header .usercontrol .usrname {
+  padding: 5px 10px;
+  display: inline-block;
+  text-decoration: none;
+}
+header .usercontrol .usrname {
+  border-right: 1px solid #7F7F7F;
+  color: #7F7F7F;
+}
+header .usercontrol .usrname > i.fa {
+  font-size: 24px;
+}
+.footer {
+  text-align: center;
+  padding: 5px;
+  border-top: 1px solid #7F7F7F;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #cfcfcf;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+.modal .modal-dialog {
+  background: #fff;
+  padding: 15px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal .modal-dialog .modal-footer {
+  text-align: right;
+}
+input[type="text"],
+input[type="email"],
+input[type="number"] {
+  border: 1px solid #ccc;
+  padding: 2px;
+}
+.form-group label {
+  display: inline-block;
+  width: 150px;
+}
+.viewItem input[type="text"] {
+  border: 0;
+}
+.pagecontent {
+  padding: 15px;
+  background: #fff;
+}
+.pagecontent .page-title {
+  border-bottom: 1px solid #484848;
+}
+.emp-control {
+  text-align: center;
+}
+.emp-control .action-bar {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.emp-control .action-bar .additem i {
+  margin-right: 5px;
+  font-size: 18px;
+  float: left;
+}
+.emp-control .action-tool {
+  text-align: center;
+}
+.emp-control .action-tool i {
+  font-size: 18px;
+}
+.emp-control .table {
+  border-collapse: collapse;
+}
+.emp-control .table.table-hover tr:hover {
+  background: #cfcfcf;
+}
+.emp-control .table.table-border {
+  border-top: 1px solid #484848;
+  border-left: 1px solid #484848;
+}
+.emp-control .table.table-border th,
+.emp-control .table.table-border td {
+  border-right: 1px solid #484848;
+  border-bottom: 1px solid #484848;
+  padding: 5px;
+}
+.emp-control .table th {
+  background: #484848;
+  color: #fff;
+}
+.emp-control .table td:even {
+  background: #cfcfcf;
+}

@@ -1,0 +1,40 @@
+.emp-control{
+    text-align: center;
+    .action-bar{
+        padding: 10px 0;
+        display: flex;
+        justify-content: space-between;       
+                    
+        .additem i{
+            margin-right: 5px;
+            font-size: 18px;
+            float: left;
+        }
+        
+    }
+    .action-tool{
+        text-align: center;
+        i{font-size: 18px;}
+    }
+    .table{border-collapse: collapse;
+        &.table-hover tr:hover{
+            background: @color-gray-medium;
+        }
+        &.table-border{
+            border-top: 1px solid @color-gray-dark; border-left: 1px solid @color-gray-dark;
+            th,td{border-right: 1px solid @color-gray-dark; border-bottom: 1px solid @color-gray-dark;
+                padding: 5px;}
+        }
+        th{
+            background: @color-gray-dark;
+            color: @color-white;
+            
+        }
+        td{
+            &:even{
+                background: @color-gray-medium;
+            }
+        }
+    }
+    
+}

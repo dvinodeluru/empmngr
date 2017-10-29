@@ -1,0 +1,28 @@
+{
+    "emp-user":[
+        {
+            "firstname":"John",
+            "lastname":"Doe",
+            "gender":"Male",
+            "email":"John.doe@xyz.com",
+            "phone":"0123456789",
+            "state":"Active"        
+        },
+        {
+            "firstname":"Micheal",
+            "lastname":"Patric",
+            "gender":"Male",
+            "email":"micheal.patric@aaa.com",
+            "phone":"5564634646",
+            "state":"Active"
+        },
+        {
+            "firstname":"Jessica",
+            "lastname":"Jones",
+            "gender":"Female",
+            "email":"jessica@aaa.com",
+            "phone":"6480694586",
+            "state":"Active"
+        }
+    ]
+}
