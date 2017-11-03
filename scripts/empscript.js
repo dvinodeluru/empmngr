@@ -1,10 +1,14 @@
 //set service
 let extHttp = new XMLHttpRequest();
 //CRUD ACTIONS
-let addRow, saveItem, viewRow, updateRow, deleteRow, closeModal, modal;
-addRow = document.getElementById('addItem');
+let addItem, saveRow, viewRow, updateRow, deleteRow, closeModal, modal;
+addItem = document.getElementById('addItem');
 modal = document.getElementById("modal");
-saveItem = document.getElementById('saveItem');
+saveRow = document.getElementById('saveItem');
+closeModal = document.querySelectorAll('.closeDialog');
+viewRow = document.querySelectorAll('.viewItem');
+updateRow = document.querySelectorAll('.updateItem');
+deleteRow = document.querySelectorAll('.deleteItem');
 var empTable = {
     clearuielements: function () {
         var inputs = document.getElementsByClassName("form-control");
@@ -35,34 +39,42 @@ var empTable = {
         extHttp.open("GET", "json/emp-record.json", true);
         extHttp.send();        
     },
-    modalui:function(){
-        empTable.clearuielements();
-        modal.classList.remove("off");
-        
-    },
     saveItem:function(){
-        
+        console.log("saveItem");
     },
     updateItem:function(){
-
+        console.log("UpdateItem");
     },
     deleteItem:function(){
-
+        console.log("deleteItem");
     },
     viewItem:function(){
-
+        console.log("viewItem");
     },
 }
 
 empTable.loadData();
 //MODAL Dialog Actions
-addRow.addEventListener('click',()=>{
-    empTable.modalui();    
+addItem.addEventListener('click',()=>{    
+        modal.classList.remove("off");
+        empTable.clearuielements();      
 });
-
-closeModal = document.querySelectorAll('.closeDialog');
-for (let i = 0; i < closeModal.length; i ++) {    
+for (let i = 0; i < closeModal.length; i ++) { 
     closeModal[i].addEventListener('click',()=>{
         modal.classList.add("off");
     });
 }
+saveRow.addEventListener('click',()=>{empTable.saveItem(); });
+[].forEach(viewRow,function(){
+
+});
+for (let i = 0; i < viewRow.length; i ++) {  
+    viewRow[i].addEventListener('click',(e)=>{empTable.viewItem(); });
+}
+for (let i = 0; i < updateRow.length; i ++) {  
+    updateRow[i].addEventListener('click',(e)=>{empTable.updateItem(); }); 
+}
+for (let i = 0; i < deleteRow.length; i ++) {  
+    deleteRow[i].addEventListener('click',(e)=>{empTable.deleteItem(); });
+} 
+
