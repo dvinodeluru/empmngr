@@ -68,7 +68,7 @@ saveItem.addEventListener('click',()=>{
 });
 // UPDATE/EDIT TABLE ROW.
 updateRow = document.querySelectorAll('.updateItem');
-for (let i = 0; i < updateRow.length; i ++){
+for (let i = 0; i < updateRow.length; i ++){   
     updateRow[i].addEventListener('click',(e)=>{
         console.log('Update button');
         /*modal.classList.remove("off");  
