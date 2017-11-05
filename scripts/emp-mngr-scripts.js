@@ -59,6 +59,7 @@ saveItem.addEventListener('click',()=>{
         Email : document.getElementById('email').value, 
         Phone : document.getElementById('phone').value, 
         Status : document.getElementById('emp-state').value
+        
     });
     empresource.push(client);
 	localStorage.setItem("json/emp-record.json", JSON.stringify(empresource));

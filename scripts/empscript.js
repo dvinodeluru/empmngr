@@ -40,14 +40,58 @@ var empTable = {
     },
     saveItem: function () {
         console.log("saveItem");
+        var firstname = document.getElementById("firstname").value;
+        var lastname = document.getElementById("lastname").value;
+        var gender = document.getElementById("gender").value;
+        var email = document.getElementById("email").value;
+        var phone = document.getElementById("phone").value;
+        var empstate = document.getElementById("emp-state").value;
+
+        prepTable(firstname,lastname,gender,email,phone,empstate);
+        
+        modal.classList.add("off");
+
+        let empItems = JSON.stringify({
+            FirstName: document.getElementById('firstname').value,
+            LastName: document.getElementById('lastname').value,
+            Gender: document.getElementById('gender').value,
+            Email: document.getElementById('email').value,
+            Phone: document.getElementById('phone').value,
+            Status: document.getElementById('emp-state').value
+        });
+        empresource.push(empItems);
+        localStorage.setItem("json/emp-record.json", JSON.stringify(empresource));
+        console.log("The data was saved.");
+        
+    },
+    prepTable: function (firstname,lastname,gender,email,phone,empstate) {
+        var empTable = document.getElementById("empTable");
+        var row = empTable.insertRow();
+
+        var firstnamecell = row.insertCell(0);
+        var lastnamecell = row.insertCell(1);
+        var gendercell = row.insertCell(2);
+        var emailcell = row.insertCell(3);
+        var phonecell = row.insertCell(4);
+        var empstatecell = row.insertCell(5);
+        var actioncell = row.insertCell(6);
+
+        firstnamecell.innerHTML = firstname;
+        lastnamecell.innerHTML = lastname;
+        gendercell.innerHTML = gender;
+        emailcell.innerHTML = email;
+        phonecell.innerHTML = phone;
+        empstatecell.innerHTML = empstate;
+        actioncell.innerHTML =  "<div class='action-tool'><button type='button' class='btn btn-none viewItem'><i class='fa fa-file-o'></i></button><button type='button' class='btn btn-none updateItem'><i class='fa fa-pencil'></i></button><button type='button' class='btn btn-none deleteItem'><i class='fa fa-close'></i></button></div>";
+
     },
     updateItem: function () {
         console.log("UpdateItem");
     },
     deleteItem: function () {
-        console.log("deleteItem");        
-        var saveDialog = document.querySelectorAll('.savedialog');
-        var confDialog = document.querySelectorAll('.confdialog');
+        console.log("deleteItem");
+        var saveDialog = document.querySelector('.savedialog');
+        var confDialog = document.querySelector('.confdialog');
         modal.classList.remove("off");
         saveDialog.classList.add("off");
         confDialog.classList.remove("off");
