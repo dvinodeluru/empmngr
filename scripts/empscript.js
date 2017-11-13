@@ -26,7 +26,7 @@ var empTable = {
                     if ($empuser[i].state == "Active") {
                         htmlElm += "<tr><td>" + $empuser[i].firstname + "</td><td>" + $empuser[i].lastname + "</td><td>" + $empuser[i].gender + " </td><td>" + $empuser[i].email + " </td><td>" + $empuser[i].phone + " </td><td>" + $empuser[i].state + "</td><td><div class='action-tool'><button class='btn btn-none viewItem'><i class='fa fa-file-o'></i></button><button class='btn btn-none updateItem'><i class='fa fa-pencil'></i></button><button class='btn btn-none deleteItem'><i class='fa fa-close'></i></button></div></td></tr>";
                     } else {
-                        htmlElm += "<tr class='inactive'><td>" + $empuser[i].firstname + "</td><td>" + $empuser[i].lastname + "</td><td>" + $empuser[i].gender + " </td><td>" + $empuser[i].email + " </td><td>" + $empuser[i].phone + " </td><td>" + $empuser[i].state + "</td><td><div class='action-tool'><button type='button' class='btn btn-none viewItem'><i class='fa fa-file-o'></i></button><button type='button' class='btn btn-none updateItem'><i class='fa fa-pencil'></i></button><button type='button' class='btn btn-none deleteItem'><i class='fa fa-close'></i></button></div></td></tr>";
+                        htmlElm += "<tr class='inactive'><td>" + $empuser[i].firstname + "</td><td>" + $empuser[i].lastname + "</td><td>" + $empuser[i].gender + " </td><td>" + $empuser[i].email + " </td><td>" + $empuser[i].phone + " </td><td>" + $empuser[i].state + "</td><td><div class='action-tool'><button type='button'onclick='viewItem()' class='btn btn-none viewItem'><i class='fa fa-file-o'></i></button><button type='button' class='btn btn-none updateItem'><i class='fa fa-pencil'></i></button><button type='button' onclick='deleteItem("+index+")' class='btn btn-none deleteItem'><i class='fa fa-close'></i></button></div></td></tr>";
                     }
                 }
                 htmlElm += "</tbody>";
@@ -47,7 +47,7 @@ var empTable = {
         var phone = document.getElementById("phone").value;
         var empstate = document.getElementById("emp-state").value;
 
-        prepTable(firstname,lastname,gender,email,phone,empstate);
+        this.prepTable(firstname,lastname,gender,email,phone,empstate);
         
         modal.classList.add("off");
 
@@ -88,7 +88,7 @@ var empTable = {
     updateItem: function () {
         console.log("UpdateItem");
     },
-    deleteItem: function () {
+    deleteItem: function (index) {
         console.log("deleteItem");
         var saveDialog = document.querySelector('.savedialog');
         var confDialog = document.querySelector('.confdialog');
@@ -101,26 +101,7 @@ var empTable = {
     }
 }
 window.onload = function () {
-    empTable.loadData();
-    viewRow = document.querySelectorAll('.viewItem');
-    updateRow = document.querySelectorAll('.updateItem');
-    deleteRow = document.querySelectorAll('.deleteItem');
-
-    for (let i = 0; i < viewRow.length; i++) {
-        viewRow[i].addEventListener('click', (e) => {
-            empTable.viewItem();
-        });
-    }
-    for (let i = 0; i < updateRow.length; i++) {
-        updateRow[i].addEventListener('click', (e) => {
-            empTable.updateItem();
-        });
-    }
-    for (let i = 0; i < deleteRow.length; i++) {
-        deleteRow[i].addEventListener('click', (e) => {
-            empTable.deleteItem();
-        });
-    }
+    empTable.loadData();    
 }
 
 
