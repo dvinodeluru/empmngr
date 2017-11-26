@@ -25,7 +25,7 @@
                 <div class="emp-control">
                     <div class="action-bar">
                         <div class="searchbox btn-group">
-                            <input type="text" id="searchBox" placeholder="Search" onblur="empTable.searchResult()"><i class="fa fa-search"></i>
+                            <input type="text" id="searchBox" placeholder="Search"><i class="fa fa-search"></i>
                         </div>
                         <div class="additem">
                             <button class="btn btn-none" id="addItem"><i class="fa fa-plus"></i>Add New</button>
@@ -33,20 +33,7 @@
                     </div>
 
                     <table id="empTable" class="table fullwidth table-hover table-border">
-                        <thead>
-                            <tr>
-                                <th><a id="stateSort" onclick="empTable.applySorting('FirstName')">First Name</a></th>
-                                <th>Last Name</th>
-                                <th>Gender</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th><a id="stateSort" onclick="empTable.applySorting('Status')">State</a></th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tablerows">
 
-                        </tbody>
                     </table>
                 </div>
             </section>
@@ -61,7 +48,7 @@
                     <h3 id="form-title">Add new item</h3>
                     <p><label>First Name</label><input type="text" id="firstname" class="form-control" /></p>
                     <p><label>Last Name</label><input type="text" id="lastname" class="form-control" /></p>
-                    <p><label>Gender</label><select id="gender"><option value="default">Select Gender</option><option value="Male">Male</option><option class="Female">Female</option></select>
+                    <p><label>Gender</label><select id="gender"><option value="default">Select Gender</option><option value="active">Male</option><option class="inactive">Female</option></select>
                         <span
                             class="gender"></span>
                     </p>
@@ -83,7 +70,6 @@
             </div>
         </div>
         <script src="http://www.fsfoo.com/js/vendor/handlebars-1.0.rc.2.js" defer="defer"></script>
-        <script src="../../node_modules/underscore/underscore-min.js" defer="defer"></script>
         <script src="scripts/empscript.js" defer="defer"></script>
     </body>
 

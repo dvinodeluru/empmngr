@@ -1,5 +1,6 @@
 var http = require('http');
 var fs = require('fs');
+var path = require('path');
 
 http.createServer(function (request, response) {
     console.log('request starting...');
@@ -8,7 +9,7 @@ http.createServer(function (request, response) {
 	if (filePath == './')
 		filePath = './index.html';
 		
-	var extname = fs.extname(filePath);
+	var extname = path.extname(filePath);
 	var contentType = 'text/html';
 	switch (extname) {
 		case '.js':
