@@ -84,7 +84,7 @@ for (let i = 0; i < updateRow.length; i ++){
         document.getElementById('emp-state').value = cli.state  */       
     });
 }
-// VIEW TABLE ROW.
+// VIEW TABLE ROW.asf
 viewRow = document.querySelectorAll('.viewItem');
 for (let i = 0; i < viewRow.length; i ++){
     viewRow[i].addEventListener('click', ()=>{

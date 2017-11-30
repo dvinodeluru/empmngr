@@ -3,7 +3,6 @@ let extHttp = new XMLHttpRequest();
 //CRUD ACTIONS
 let addItem, saveRow, viewRow, updateRow, deleteRow, closeModal, modal, empDataArray = [], updateIndex = -1, deleteRowIndex = -1,
 saveDialog = document.querySelector('.savedialog'),
-searchText = document.getElementById('searchBox'),
 confDialog = document.querySelector('.confdialog');
 
 addItem = document.getElementById('addItem');
@@ -26,15 +25,14 @@ var empTable = {
         if(localStorage.empData){           
             empDataArray = JSON.parse(localStorage.empData);           
             for(var i =0; i < empDataArray.length; i++){                
-                self.prepTable(empDataArray[i].empId, empDataArray[i].FirstName,  empDataArray[i].LastName, empDataArray[i].Gender, empDataArray[i].Email, empDataArray[i].Phone, empDataArray[i].Status);
+                self.prepTable(i, empDataArray[i].FirstName,  empDataArray[i].LastName, empDataArray[i].Gender, empDataArray[i].Email, empDataArray[i].Phone, empDataArray[i].Status);
             }            
         }            
     },
     saveItem: function () {
         console.log("saveItem");        
         
-        modal.classList.add("off");
-        searchText.value = "";
+        modal.classList.add("off");        
         let empObj = {
             empId: Math.floor((Math.random() * 100) + 1),
             FirstName: document.getElementById('firstname').value,
@@ -53,37 +51,37 @@ var empTable = {
         console.log("The data was saved.");
         
     },
-    prepTable: function (empId, firstname, lastname, gender, email, phone, empstate) {
-        var tableRows = document.getElementById("tablerows"), 
-            table = document.getElementById("empTable"),
-            newRow,
+    prepTable: function (index, firstname, lastname, gender, email, phone, empstate) {
+        var tableRows = document.getElementById("tablerows"), table = document.getElementById("empTable"),
+            newRow = tableRows.insertRow(),
             self = this;
-
-        if(empId !== -1){
-            newRow = tableRows.insertRow();
-            empstate === 'Inactive' ? newRow.className = 'inactive' : newRow.className = '';            
+        if(index !== -1){
+            var firstnamecell = newRow.insertCell(0);
+            var lastnamecell = newRow.insertCell(1);
+            var gendercell = newRow.insertCell(2);
+            var emailcell = newRow.insertCell(3);
+            var phonecell = newRow.insertCell(4);
+            var empstatecell = newRow.insertCell(5);
+            var actioncell = newRow.insertCell(6);
     
-            newRow.insertCell(0).innerHTML = firstname;
-            newRow.insertCell(1).innerHTML = lastname;
-            newRow.insertCell(2).innerHTML = gender;
-            newRow.insertCell(3).innerHTML = email;
-            newRow.insertCell(4).innerHTML = phone;
-            newRow.insertCell(5).innerHTML = empstate;
-            // Delete only inactive items
-            newRow.insertCell(6).innerHTML =  empstate === 'Inactive' ? "<div class='action-tool'><button type='button' class='btn btn-none viewItem' onclick='empTable.viewItem("+ empId +")'><i class='fa fa-file-o'></i></button><button type='button' class='btn btn-none updateItem' onclick='empTable.updateItem("+ empId +")'><i class='fa fa-pencil'></i></button><button type='button' class='btn btn-none deleteItem' onclick='empTable.deleteConfirmation("+ empId +")'><i class='fa fa-close'></i></button></div>"
-                                                                        : "<div class='action-tool'><button type='button' class='btn btn-none viewItem' onclick='empTable.viewItem("+ empId +")'><i class='fa fa-file-o'></i></button><button type='button' class='btn btn-none updateItem' onclick='empTable.updateItem("+ empId +")'><i class='fa fa-pencil'></i></button><button type='button' disabled class='btn btn-none deleteItem' style='opacity:0.5; cursor: default;' onclick='empTable.deleteConfirmation("+ empId +")'><i class='fa fa-close'></i></button></div>"
+            firstnamecell.innerHTML = firstname;
+            lastnamecell.innerHTML = lastname;
+            gendercell.innerHTML = gender;
+            emailcell.innerHTML = email;
+            phonecell.innerHTML = phone;
+            empstatecell.innerHTML = empstate;
+            actioncell.innerHTML =  "<div class='action-tool'><button type='button' class='btn btn-none viewItem' onclick='empTable.viewItem("+ index +")'><i class='fa fa-file-o'></i></button><button type='button' class='btn btn-none updateItem' onclick='empTable.updateItem("+ index +")'><i class='fa fa-pencil'></i></button><button type='button' class='btn btn-none deleteItem' onclick='empTable.deleteConfirmation("+ index +")'><i class='fa fa-close'></i></button></div>";
         }else{
-            //table.deleteRow(0);
+            table.deleteRow(0);
         }
     },
-    updateItem: function (selecEmpId) {
+    updateItem: function (index) {
         console.log("UpdateItem");        
         modal.classList.remove("off");
         saveDialog.classList.remove("off");
-        
-        updateIndex = _.findIndex(empDataArray, { empId: selecEmpId });
-        var empObj = empDataArray[updateIndex];
-        
+
+        updateIndex = index;
+        var empObj = empDataArray[index];
         document.getElementById("firstname").value = empObj.FirstName;
         document.getElementById("lastname").value = empObj.LastName;
         document.getElementById("gender").value = empObj.Gender;
@@ -91,31 +89,31 @@ var empTable = {
         document.getElementById("phone").value = empObj.Phone;
         document.getElementById("emp-state").value = empObj.Status;
     },
-    deleteConfirmation: function (empID) {
+    deleteConfirmation: function (index) {
         console.log("deleteItem");        
-        
+        //var saveDialog = document.querySelector('.savedialog');
+        //var confDialog = document.querySelector('.confdialog');
         modal.classList.remove("off");
         saveDialog.classList.add("off");
         confDialog.classList.remove("off");
-        deleteRowIndex = _.findIndex(empDataArray, { empId: empID });
+        deleteRowIndex = index;
     },
-    deleteRow: function () {        
+    deleteRow: function () {
         if(deleteRowIndex > -1){
             //var confDialog = document.querySelector('.confdialog');
             modal.classList.add("off");
             confDialog.classList.add("off");
-            empDataArray.splice(deleteRowIndex, 1);            
+            empDataArray.splice(deleteRowIndex, 1);
             localStorage.empData = JSON.stringify(empDataArray);
-            searchText.value === "" ? this.loadData() : this.searchResult()
+            this.loadData();
             deleteRowIndex = -1;
         }        
     },
-    viewItem: function (selecEmpId) {
+    viewItem: function (index) {
         console.log("viewItem");        
         modal.classList.remove("off");
-        saveDialog.classList.remove("off"); 
-              
-        var empObj = empDataArray[_.findIndex(empDataArray, { empId: selecEmpId })];
+        saveDialog.classList.remove("off");        
+        var empObj = empDataArray[index];
         document.getElementById("firstname").value = empObj.FirstName;
         document.getElementById("lastname").value = empObj.LastName;
         document.getElementById("gender").value = empObj.Gender;
@@ -164,23 +162,20 @@ var empTable = {
     },
 
     searchResult: function(){
-        var searchResult, self = this;
-        
+        var searchText, searchResult, self = this;
+        searchText = document.getElementById('searchBox')
         searchResult = _.filter(empDataArray, function(obj){
             return obj.FirstName === searchText.value || obj.Gender === searchText.value || obj.Status === searchText.value || obj.LastName === searchText.value;
         })
         if(searchResult.length > 0){
             document.getElementById("tablerows").innerHTML = "";
             for(var i =0; i < searchResult.length; i++){                
-                self.prepTable(searchResult[i].empId, searchResult[i].FirstName,  searchResult[i].LastName, searchResult[i].Gender, searchResult[i].Email, searchResult[i].Phone, searchResult[i].Status);
+                self.prepTable(i, searchResult[i].FirstName,  searchResult[i].LastName, searchResult[i].Gender, searchResult[i].Email, searchResult[i].Phone, searchResult[i].Status);
             }
         }else if(searchText.value === ""){
             self.loadData();
         }else{
             alert('no matching records');
-            //searchText = "";
-            //self.loadData();
-
         }        
     }
 }
@@ -200,6 +195,7 @@ for (let i = 0; i < closeModal.length; i++) {
         modal.classList.add("off");
         confDialog.classList.add("off");
         saveDialog.classList.add("off");
+
     });
 }
 saveRow.addEventListener('click', () => {
